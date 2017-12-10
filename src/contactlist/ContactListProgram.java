@@ -112,6 +112,15 @@ class ContactList {
     	}
     }
     
+    private void deleteContact()
+    {
+    	System.out.println("Number position for contact to be deleted?");
+    	String index = scanInput.nextLine(); 
+    	int selectedIindex = Integer.parseInt(index);	
+    	
+    	contactManager.DeleteContact(selectedIindex -1);
+    }
+    
     private void menu()
     {
     	boolean programEnded = false;
@@ -137,6 +146,9 @@ class ContactList {
 	    	      break;	   
  	          case "3":
  	        	 changeContact();
+	    	      break;	
+ 	          case "4":
+ 	        	 deleteContact();
 	    	      break;		    	      
     	      case "5":
     	    	  programEnded = true;
@@ -235,57 +247,7 @@ class ContactList {
 
         return ok;
     }    
-    
-    
-    
-    /**
-     * Method that gives error if change or cancel buttons are clicked on.
-     * 
-     * @return result
-     */
-    private boolean listIsEmpty()
-    {
-        if (contactManager.getCount() == 0)
-        {
-            //MessageBox.Show("Action can not be performed. List is empty.");
-            return true;
-        }
-        return false;
-    }
-        
-    /**
-     * Method that executes when button Cancel is clicked on.
-     * 
-     */
-    private void btnCancel_Click()
-    {
-        if (!listIsEmpty())
-        {
-
-            //if (lstResults.SelectedIndex != -1)
-            //{
-            //    contactManager.DeleteContact(lstResults.SelectedIndex);
-            //}
-            //Rebuild the Contactlist.
-            //updateGUI();
-        }
-    }
-    
-    /**
-     * Method to get contact from list and add it to contact inputs.
-     * 
-     */
-    private void getContactFromList()
-    {
-        Contact contact = new Contact();
-
-        //contact = contactManager.getContact(lstResultsChangeIndex);
-        txtFirstName = contact.getFirstName();
-        txtLastName = contact.getLastName();
-        txtStreet = contact.getAddressData().getStreet();
-        txtZipCode = contact.getAddressData().getZipCode();
-        txtCity = contact.getAddressData().getCity();
-    }
+                
 }
 
 /**
