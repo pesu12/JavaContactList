@@ -68,7 +68,7 @@ class ContactList {
     	System.out.println("Zipcode?");
     	txtZipCode = scanInput.nextLine();   
         	
-    	if(readInput("Add"))
+    	if(readInput("Add",0))
     	{
     		System.out.println("Contact was successfully added");
     	}
@@ -85,7 +85,31 @@ class ContactList {
     
     private void changeContact()
     {
+    	System.out.println("Number position for contact to be changed?");
+    	String index = scanInput.nextLine(); 
+    	int selectedIindex = Integer.parseInt(index);
     	
+    	System.out.println(selectedIindex + ". " + contactManager.getContact(selectedIindex-1).toString());
+    	
+    	System.out.println("New First Name?");
+    	txtFirstName = scanInput.nextLine();    	
+    	
+    	System.out.println("New Last Name?");
+    	txtLastName = scanInput.nextLine();    
+    	
+    	System.out.println("New City?");
+    	txtCity = scanInput.nextLine();  
+    	
+    	System.out.println("New Street?");
+    	txtStreet = scanInput.nextLine();      	
+    	
+    	System.out.println("New Zipcode?");
+    	txtZipCode = scanInput.nextLine();   
+    	
+    	if(readInput("Update",selectedIindex -1))
+    	{
+    		System.out.println("Contact was successfully Updated");
+    	}
     }
     
     private void menu()
@@ -110,7 +134,10 @@ class ContactList {
 	    	      break;
  	          case "2":
  	        	 displayContacts();
-	    	      break;	    	  
+	    	      break;	   
+ 	          case "3":
+ 	        	 changeContact();
+	    	      break;		    	      
     	      case "5":
     	    	  programEnded = true;
     	    	  break;
@@ -149,9 +176,9 @@ class ContactList {
      * 
      * @param contact
      */
-    private void changeInContactList(Contact contact)
+    private void changeInContactList(Contact contact, int pos)
     {
-        //contactManager.ChangeContact(contact, lstResultsChangeIndex);
+        contactManager.changeContact(contact, pos);
     }    
     
     /**
@@ -169,7 +196,7 @@ class ContactList {
      * @param action
      * @return ok
      */
-    private boolean readInput(String action)
+    private boolean readInput(String action, int pos)
     {
 
         //Create an object-instance of object.
@@ -198,7 +225,7 @@ class ContactList {
             else
             {
                 //Update Contactlist 
-                changeInContactList(contact);
+                changeInContactList(contact,pos);
             }
         }
         else
@@ -225,22 +252,7 @@ class ContactList {
         }
         return false;
     }
-    
-    /**
-     * Method that executes when button Change is clicked on.
-     * 
-     */
-    private void btnChange_Click()
-    {
-        if(!listIsEmpty())
-        {
-            boolean ok = readInput("Change");
-            if (ok)
-            {
-            }
-        }
-    }
-    
+        
     /**
      * Method that executes when button Cancel is clicked on.
      * 
