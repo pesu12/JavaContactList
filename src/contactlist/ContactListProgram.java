@@ -51,6 +51,11 @@ class ContactList {
         txtCity = "";
     }
         
+    /**
+     *     
+     * Method to add contact to contactlist
+     * 
+     */
     private void addContact()
     {	
     	System.out.println("First Name?");
@@ -74,6 +79,10 @@ class ContactList {
     	}
     }
     
+    /**
+     * Method to display Contacts when display is selected from menu.
+     * 
+     */
     private void displayContacts()
     {
         //Add all contact-info to list except for when null is found 
@@ -83,6 +92,10 @@ class ContactList {
         }
     }
     
+    /**
+     * Method to change Contacts when change is selected from menu.
+     * 
+     */
     private void changeContact()
     {
     	System.out.println("Number position for contact to be changed?");
@@ -112,6 +125,10 @@ class ContactList {
     	}
     }
     
+    /**
+     * Method to delete Contact when delete is selected from menu.
+     * 
+     */
     private void deleteContact()
     {
     	System.out.println("Number position for contact to be deleted?");
@@ -121,6 +138,10 @@ class ContactList {
     	contactManager.DeleteContact(selectedIindex -1);
     }
     
+    /**
+     * Method that handles and displays the menu.
+     * 
+     */
     private void menu()
     {
     	boolean programEnded = false;
@@ -193,14 +214,6 @@ class ContactList {
         contactManager.changeContact(contact, pos);
     }    
     
-    /**
-     * Method that increase RegistredRecords.
-     * 
-     */
-    private void updateRegistredRecords()
-    {
-        //lblRecords = contactManager.getCount();
-    }    
     
     /**
      * Method that Reads the contact.
